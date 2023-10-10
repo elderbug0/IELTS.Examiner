@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    <link rel="stylesheet" href="{{url_for('static',filename='css/style.css')}}">
+    <title>WriteWave</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <style>
+      /* CSS for styling the "Email us" link as a button */
+      /* CSS for styling the loading spinner */
+
+
+    </style>
+
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h3 id="one"></h3>
+      <h3 id="name">WriteWave</h3>
+    </div>
+    <div class="left-panel">
+      <h1>Your Personal IELTS Essay Examiner</h1>
+      <form id="chat-form">
+        <label for="user-question">Question:</label>
+        <textarea
+          type="text"
+          id="user-question"
+          name="user_question"
+          placeholder="Type your question..."
+        ></textarea>
+        <div class="error-message" id="question-error-message">Question cannot be empty.</div>
+
+        <label for="user-input">Your essay:</label>
+        <textarea
+          id="user-input"
+          name="user_input"
+          placeholder="Type your message..."
+        ></textarea>
+        <div class="error-message" id="user-input-error-message">Your essay cannot be empty.</div>
+
+
+        <button type="submit" id="submitBtn">Submit</button>
+
+        <button id="model-answer-btn">Model Answer</button>
+        <div id="model"></div>
+
+        <button id="get_suggestion">Get suggestion</button>
+        <div id="sg"></div>
+
+      </form>
+    </div>
+    <div class="right-panel">
+      <div id="overall-score-box">
+        <h2>Overall Score</h2>
+        <p id="overall-score"></p>
+      </div>
+
+ <!-- Add the reset button -->
+      <div id="word-count">Word count: 0 | Paragraph count: 0</div>
+      <div id="result"></div>
+      <button id="resetBtn">Reset</button>
+      <footer id="foot"> 
+        <p>&copy; WriteWave</p>
+      </footer>
+    </div>
+  </div>
+
+  <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+  </body>
+</html>
