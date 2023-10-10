@@ -8,7 +8,7 @@ app = Flask(__name__)
 CORS(app)
 
 # Set your OpenAI API key
-openai.api_key = "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"
+openai.api_key = "API_KEY"
 
 
 def extract_scores(content):
