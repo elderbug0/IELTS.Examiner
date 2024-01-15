@@ -9,6 +9,9 @@ window.onload = function () {
   const submitBtn = document.getElementById("submitBtn");
   const resetBtn = document.getElementById("resetBtn");
   const resultDiv = document.getElementById("result");
+  const uplaod = document.getElementById("uploadBtn")
+  const uploadSpinner = document.getElementById("uploadSpinner"); // Add this line
+
   let spinnerDiv; // Declare spinnerDiv
 
   let submitButtonClicked = false;
@@ -33,6 +36,46 @@ window.onload = function () {
     return spinner;
   };
 
+  function displayErrorBox(errorData) {
+    const errorBox = document.getElementById("error-box");
+    const errorContent = document.getElementById("user-input-error");
+  
+    // Clear previous content
+    errorContent.innerHTML = '';
+  
+    // Check if there are error words and suggestions
+    if (errorData.length > 0) {
+      errorBox.style.display = "block";
+  
+      // Create a copy of the original text
+      let originalText = document.getElementById("user-input").value;
+  
+      // Create a new div to display the highlighted text
+      const highlightedTextDiv = document.createElement("div");
+  
+      // Iterate through each error data
+      errorData.forEach((error) => {
+        // Create a span for each error word
+        const errorSpan = document.createElement("span");
+        errorSpan.innerHTML = `<span class="error-word" data-suggestion="${error.suggestions[0].suggestion}">${error.text}</span> `;
+        
+        // Append the span to the highlighted text
+        highlightedTextDiv.appendChild(errorSpan);
+  
+        // Replace the error word with the highlighted version in the original text
+        originalText = originalText.replace(error.text, errorSpan.outerHTML);
+      });
+  
+      // Set the content of the error content div to the highlighted text
+      errorContent.innerHTML = originalText;
+  
+
+    } else {
+      // If no error data, hide the error box
+      errorBox.style.display = "none";
+    }
+  }
+  
   document.getElementById("chat-form").addEventListener("submit", function (event) {
     event.preventDefault();
 
@@ -108,13 +151,31 @@ window.onload = function () {
         resultDiv.innerHTML = content;
 
         // Disable submit button after receiving the result
-        submitBtn.disabled = true;
+        submitBtn.disabled = false;
         enableButtons();
       })
       .catch((error) => {
         console.error("Error fetching response:", error);
         submitButtonClicked = false; // Reset the submit flag
       });
+
+      fetch('/text', {
+        method: 'POST',
+        body: formData,
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          // Extract the content from the data received
+          let textData = data.text;
+          console.log("Extracted Text:", textData);
+          displayErrorBox(textData);
+        })
+        
+      
+        .catch((error) => {
+          console.error("Error fetching response:", error);
+        });
+
   });
 
   userQuestionInput.addEventListener("input", function () {
@@ -231,6 +292,11 @@ window.onload = function () {
     document.getElementById("model").innerHTML = "";
     document.getElementById("sg").innerHTML = "";
 
+    const errorBox = document.getElementById("error-box");
+    const errorContent = document.getElementById("user-input-error");
+    errorContent.innerHTML = "";
+    errorBox.style.display = "none";;
+
     submitButtonClicked = false;
     submitBtn.disabled = false;
 
@@ -245,6 +311,43 @@ window.onload = function () {
     // Remove the spinner when resetting
     if (spinnerDiv) {
       spinnerDiv.remove();
+    }
+  });
+  uplaod.addEventListener("click", function (event) {
+    event.preventDefault();
+      uploadSpinner.style.display = "inline-block";
+
+
+      const fileInput = document.getElementById("photo-upload");
+      const file = fileInput.files[0];
+  
+      const formData = new FormData();
+      formData.append("file", file);
+
+      fetch("/upload", {
+        method: "POST",
+        body: formData,
+      })
+        .then((response) => response.json())
+        .then((data) => {
+           const extractedText = data.text;
+           const userInputInput = document.getElementById("user-input");
+           userInputInput.value += "\n\n" + extractedText; // Append extracted text to user-input
+           uploadSpinner.style.display = "none";
+        })
+        .catch((error) => {
+           console.error("Error uploading file:", error);
+           uploadSpinner.style.display = "none";
+        });
+  });
+  document.getElementById("user-input-error").addEventListener("mouseover", function (event) {
+    const target = event.target;
+    if (target.classList.contains("error-word")) {
+      const suggestion = target.dataset.suggestion;
+      if (suggestion) {
+        // Show suggestion on hover
+        alert(`Suggestion: ${suggestion}`);
+      }
     }
   });
 };

@@ -3,12 +3,19 @@ from flask_cors import CORS
 import openai
 from openai.error import OpenAIError
 import re
+import json
+import requests
 
 app = Flask(__name__)
 CORS(app)
 
 # Set your OpenAI API key
 openai.api_key = "API_KEY"
+
+headers = {"Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNDAyMjE5MjgtNjZlMC00ZjdmLTgxZGMtNDI1YzcyOGIzMjRjIiwidHlwZSI6ImFwaV90b2tlbiJ9.v8a_xa_PMX9QY8Siv5Z1D_lvjRq5C4vzbpVEsH9hlLs"}
+
+url = "https://api.edenai.run/v2/ocr/ocr"
+url2 = "https://api.edenai.run/v2/text/spell_check"
 
 
 def extract_scores(content):
@@ -30,19 +37,6 @@ def calculate_overall_score(scores):
     return overall_score
 
 
-band_descriptors_path = 'files/band_description.txt'
-model_ans_path = 'files/model answer.txt'
-ma_path = 'files/ma.txt'
-
-with open(band_descriptors_path, 'r', encoding='utf-8') as file:
-    band_descriptors = file.read()
-
-with open(model_ans_path, 'r', encoding='utf-8') as file:
-    model_ans = file.read()
-
-with open(ma_path, 'r', encoding='utf-8') as file:
-    ma = file.read()
-
 
 @app.route('/')
 def index():
@@ -54,7 +48,7 @@ def gpt3():
     user_input = request.form['user_input']
 
     messages = [
-        {"role": "system", "content": f"You know everything in scoring Ielts writing task 2. Using band descriptor for IELTS writing task 2 score this essay - {band_descriptors}. BUT DO NOT WRITE OVERALL SCORE, WRITE ONLY SCORES FOR EACH SECTION; I will give the overall score by myself and Ensure that you do not provide an overall score for the essay or any output beyond the Grammatical Range and Accuracy section. Use only this model response as a template to give a good answer - {model_ans}. And if the essay's structure is bad you should give lower points. Be very strict in scoring and remove points for gramatical mistakes and etcetra. If user gives something not essay, give 0 in every score  "},
+        {"role": "system", "content": f"You know everything in scoring Ielts writing task 2. Using band descriptor for IELTS writing task 2 score this essay - . BUT DO NOT WRITE OVERALL SCORE, WRITE ONLY SCORES FOR EACH SECTION; I will give the overall score by myself and Ensure that you do not provide an overall score for the essay or any output beyond the Grammatical Range and Accuracy section. Use only this model response as a template to give a good answer -  And if the essay's structure is bad you should give lower points. Be very strict in scoring and remove points for gramatical mistakes and etcetra. If user gives something not essay, give 0 in every score  "},
         {"role": "user", "content": user_input}
     ]
 
@@ -115,6 +109,40 @@ def suggest():
         content = "The server is experiencing a high volume of requests. Please try again later."
         return jsonify(content=content)
 
+
+@app.route('/upload', methods=['POST'])
+def upload():
+    data = {
+        "providers": "google",
+        "language": "en",
+        "fallback_providers": ""
+    }
+    file = request.files['file']
+
+    response = requests.post(url, data=data, files={"file": (file.filename, file.read())}, headers=headers)
+
+    result = json.loads(response.text)
+    extracted_text = result["google"]["text"]
+
+    return jsonify(text=extracted_text)
+
+@app.route('/text',methods = ['POST'])
+def text():
+    user_text = request.form['user_input']
+
+    payload = {
+    "providers": "openai,microsoft",
+    "language": "en",
+    "text": user_text,
+    "fallback_providers": "",
+    }
+
+
+    response = requests.post(url2, json=payload, headers=headers)
+
+    result = json.loads(response.text)
+    res=result['openai']['items']
+    return jsonify(text=res)
 
 if __name__ == '__main__':
     app.run(port=5000)

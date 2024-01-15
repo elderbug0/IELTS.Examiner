@@ -43,8 +43,21 @@
         ></textarea>
         <div class="error-message" id="user-input-error-message">Your essay cannot be empty.</div>
 
+<!-- Add the following code inside your form in the left-panel div -->
+        <label for="photo-upload">Upload Photo:</label>
+        <input type="file" id="photo-upload" name="file_upload" onchange="uploadFile()">
+        <button id="uploadBtn">Upload</button>
+
+        <div id="uploadSpinner" class="small-spinner" style="display: none;"></div>
 
         <button type="submit" id="submitBtn">Submit</button>
+
+        <!-- Add the following code inside your form in the left-panel div -->
+        <div id="error-box" style="display: none;">
+          <h3>Error Box</h3>
+          <div id="user-input-error"></div>
+        </div>
+        
 
         <button id="model-answer-btn">Model Answer</button>
         <div id="model"></div>

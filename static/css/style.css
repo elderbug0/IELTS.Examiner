@@ -1,6 +1,6 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #ffffff;
+    background-color: #f4fffd;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -11,7 +11,7 @@ body {
 }
 
 .container {
-    background-color: #ffffff;
+    background-color: #fdfdfd;
     border-radius: 0.3125rem; /* 5px in rem */
     padding: 1.25rem; /* 20px in rem */
     display: flex;
@@ -95,12 +95,11 @@ body {
 }
 
 .header {
-    width: 30rem;
-    background-color: #e0e5ff;
+    width: 70rem;
+    background-color: #dff1fbf0;
     flex-wrap: wrap;
     flex-direction: column;
     padding: 1.25rem; /* 20px in rem */
-    border: 0.125rem solid #dbdbdb; /* 2px in rem */
     border-radius: 0.3125rem; /* 5px in rem */
     margin-bottom: 0.625rem; /* 10px in rem */
 }
@@ -151,7 +150,7 @@ body {
 }
 
 .right-panel {
-    width: 25rem; /* 400px in rem */
+    width: 17rem; /* 400px in rem */
     padding: 0.625rem; /* 10px in rem */
     position: relative;
 }
@@ -337,4 +336,14 @@ label {
 
 #foot {
     margin-left: 6.875rem; /* 110px in rem */
+}
+/* Add these styles for error words underline */
+.error-word {
+    color: red;
+    cursor: pointer;
+    text-decoration: underline;
+  }
+  
+.error-word:hover {
+    background-color: #ffe6e6; /* Light red background on hover */
 }
