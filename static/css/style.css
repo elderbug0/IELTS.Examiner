@@ -1,181 +1,57 @@
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f4fffd;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
+    background-color: #FBF9F1;
     margin: 0;
-    overflow-x: hidden;
-    font-size: 1rem; /* Base font size */
-}
-
-.container {
-    background-color: #fdfdfd;
-    border-radius: 0.3125rem; /* 5px in rem */
-    padding: 1.25rem; /* 20px in rem */
+    padding: 0;
     display: flex;
-    justify-content: space-between;
-    width: 100%; /* Adjust the width as needed */
-    box-shadow: 0 0.0625rem 0.1875rem rgba(0, 0, 0, 0.12), 0 0.0625rem 0.125rem rgba(0, 0, 0, 0.24);
-}
+  }
 
-@media (max-width: 1000px) {
-    .container {
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-    }
-
-    h1{
-        width: 17.5rem;
-        margin-left: 2rem;
-    }
-
-    .header {
-        display: none;
-        border-color: white; /* Hide the header on mobile */
-    }
-
-    #result, #model, #sg {
-        display: block; /* Display these elements on mobile */
-    }
-
-    #model, #sg, #get_suggestion {
-        margin-top: 1rem; /* Adjust spacing for mobile */
-    }
-
-    body {
-        font-size: 14px;
-        border-color: white; /* Adjust base font size for mobile */
-    }
-
-    #foot {
-        margin-left: 0;
-    }
-    #user-input{
-        width: 21rem;
-    }
-    #user-question{
-        width: 21rem;
-    }
-    #submitBtn{
-        width: 22.4rem;
-    }
-    .left-panel{
-        width: 100%;
-    }
-    #model {
-        width: 19.5rem !important; /* Add !important to ensure it takes precedence */
-    }
-    #sg {
-        width: 19.5rem !important; /* Add !important to ensure it takes precedence */
-    }
-    #result{
-        margin-right: 2rem;
-    }
-    #result, #overall-score {
-        margin: 0 auto;
-    }
-    #overall-score-box {
-        text-align: center;
-        margin: 0 auto;
-    }
-    #word-count{
-        margin-left: 4.5rem !important;
-    }
-    #resetBtn{
-        margin-left: 9rem !important;
-    }
-    #foot{
-        margin-left: 8.5rem !important;
-    }
-
-
-}
-
-.header {
-    width: 70rem;
-    background-color: #dff1fbf0;
-    flex-wrap: wrap;
-    flex-direction: column;
-    padding: 1.25rem; /* 20px in rem */
-    border-radius: 0.3125rem; /* 5px in rem */
-    margin-bottom: 0.625rem; /* 10px in rem */
-}
-
-#emailLink {
-    color: rgb(0, 0, 0);
-    text-decoration: none;
-}
-
-#one {
-    margin-top: 2.5rem; /* 40px in rem */
-    color: rgb(0, 0, 0);
-    font-size: 0.9375rem; /* 15px in rem */
-    margin-bottom: 1.875rem; /* 30px in rem */
-}
-
-#one:after {
-    margin-top: 1.4375rem; /* 23px in rem */
-    content: ' ';
-    display: block;
-    border: 0.125rem solid #000000; /* 2px in rem */
-    border-radius: 0.25rem; /* 4px in rem */
-    box-shadow: inset 0 0.0625rem 0.0625rem rgba(0, 0, 0, 0.05);
-}
-
-#two {
-    color: rgb(0, 0, 0);
-    font-size: 0.9375rem; /* 15px in rem */
-}
-
-#two:after {
-    margin-top: 1.4375rem; /* 23px in rem */
-    content: ' ';
-    display: block;
-    border: 0.125rem solid #000000; /* 2px in rem */
-    border-radius: 0.25rem; /* 4px in rem */
-    box-shadow: inset 0 0.0625rem 0.0625rem rgba(0, 0, 0, 0.05);
-}
-
-#name {
-    color: rgb(39, 39, 39);
-    font-size: 0.75rem; /* 12px in rem */
-}
-
-.left-panel {
-    flex: 0.125rem; /* Adjust the flex value to allocate more space */
-    padding: 0.625rem; /* 10px in rem */
-}
-
-.right-panel {
-    width: 17rem; /* 400px in rem */
-    padding: 0.625rem; /* 10px in rem */
-    position: relative;
-}
-
-h1 {
-    text-align: center;
-    margin-bottom: 3.125rem; /* 50px in rem */
-}
-
-form {
+  /* New CSS for the vertical fixed header on the left */
+  #header {
+    background-color: #AAD7D9;
+    color: white;
+    padding: 10px;
     display: flex;
+    width: 12.5rem;
     flex-direction: column;
+    align-items: center;
+    position: fixed;
+    height: 100%;
+    z-index: 1000;
+  }
+
+  .error-message {
+    color: red;
+    display: none;
 }
 
-label {
-    margin-top: 0.625rem; /* 10px in rem */
-}
+  #logo {
+    margin-top: 1.3rem;
+    margin-left: 1.3rem;
+    width: 8rem; /* Set the width of your logo */
+    height: 6rem; /* Set the height of your logo */
+    margin-bottom: 10px;
+  }
 
-#user-question {
+  #line{
+    margin-top: -1rem;
+    width: 14rem;
+  }
+
+  #header-text {
+    margin-top: 1rem;
+    font-size: 24px;
+    font-weight: bold;
+    color: black;
+    font-family: Georgia;
+  }
+
+  #user-question {
     resize: none;
     height: 6.25rem; /* 100px in rem */
-    border: 0.0625rem solid #ccc; /* 1px in rem */
-    border-radius: 0.3125rem; /* 5px in rem */
-    padding: 0.625rem; /* 10px in rem */
-    margin-bottom: 0.625rem; /* 10px in rem */
+    border-color: #F5F1E2;
+    background-color: #F5F1E2;
+    border-radius: 1rem; /* 5px in rem */
+    padding: 0.8rem; /* 10px in rem */
     font-size: 1rem; /* 16px in rem */
     font-family: "Arial", sans-serif;
     font-weight: normal;
@@ -185,16 +61,39 @@ label {
 #user-input {
     resize: none;
     height: 26.875rem; /* 430px in rem */
-    border: 0.0625rem solid #ccc; /* 1px in rem */
-    border-radius: 0.3125rem; /* 5px in rem */
-    padding: 0.625rem; /* 10px in rem */
-    margin-bottom: 0.625rem; /* 10px in rem */
+    border-color: #F5F1E2;
+    background-color: #F5F1E2;
+    border-radius: 1rem; /* 5px in rem */
+    padding: 0.8rem; /* 10px in rem */
     font-size: 1rem; /* 16px in rem */
     font-family: "Arial", sans-serif;
     font-weight: normal;
     color: #333;
 }
+form {
+    margin-left: -2rem;
+    width: 50rem;
+    display: flex;
+    flex-direction: column;
+}
+.left-panel{
+    margin-left: 20rem;
+}
+.right-panel{
+    margin-top: 9rem;
+}
 
+h1{
+    margin-left: 17rem;
+    font-family: Monospace;
+    margin-bottom: 6rem;
+}
+#line2 {
+    margin-left: 90rem;
+    margin-top: -15rem;
+    width: 60rem;
+ /* Add margin at the top of #line2 */
+}
 #submitBtn {
     background-color: #4caf50;
     color: white;
@@ -208,142 +107,9 @@ label {
 #submitBtn:hover {
     background-color: #45a049;
 }
-
-#model-answer-btn {
-    background-color: #2196F3;
-    color: white;
-    border: none;
-    border-radius: 0.3125rem; /* 5px in rem */
-    padding: 0.625rem 0.9375rem; /* 10px 15px in rem */
-    cursor: pointer;
-    align-self: flex-start;
-    margin-bottom: 0.625rem; /* 10px in rem */
-}
-
-#get_suggestion {
-    background-color: #2196F3;
-    color: white;
-    border: none;
-    border-radius: 0.3125rem; /* 5px in rem */
-    padding: 0.625rem 0.9375rem; /* 10px 15px in rem */
-    cursor: pointer;
-    align-self: flex-start;
-    margin-top: 1.25rem; /* 20px in rem */
-}
-
-#get_suggestion:hover {
-    background-color: #1976D2;
-}
-
-#model-answer-btn:hover {
-    background-color: #1976D2;
-}
-
-#result {
-    margin-top: 1.875rem; /* 30px in rem */
-    padding: 1.25rem; /* 20px in rem */
-    min-height: 5rem; /* 80px in rem */
-    overflow-wrap: break-word;
-    width: 20rem; /* 80% in rem */
-    margin-bottom: 0.625rem; /* 10px in rem */
-}
-
-#model {
-    border: 0.0625rem solid #ccc; /* 1px in rem */
-    border-radius: 0.3125rem; /* 5px in rem */
-    padding: 1.25rem; /* 20px in rem */
-    background-color: #f8f8f8;
-    min-height: 6.25rem; /* 100px in rem */
-    overflow-wrap: break-word;
-    width: 60rem; /* 950px in rem */
-    margin-bottom: 0.625rem; /* 10px in rem */
-}
-
-#sg {
-    border: 0.0625rem solid #ccc; /* 1px in rem */
-    border-radius: 0.3125rem; /* 5px in rem */
-    padding: 1.25rem; /* 20px in rem */
-    background-color: #f8f8f8;
-    min-height: 6.25rem; /* 100px in rem */
-    overflow-wrap: break-word;
-    width: 60rem; /* 950px in rem */
-    margin-top: 0.625rem; /* 10px in rem */
-}
-
-.error-message {
-    color: red;
-    display: none;
-}
-
-#word-count {
-    margin-top: 1.875rem; /* 30px in rem */
-    margin-left: 3.4375rem; /* 55px in rem */
-    font-size: 0.875rem; /* 14px in rem */
-}
-
-#resetBtn {
-    margin-left: 7.8125rem; /* 125px in rem */
-    background-color: #e53935;
-    color: white;
-    border: none;
-    border-radius: 0.3125rem; /* 5px in rem */
-    padding: 0.625rem 0.9375rem; /* 10px 15px in rem */
-}
-
-#resetBtn:hover {
-    background-color: #c62828;
-}
-
-#overall-score-box {
-    text-align: center; /* Center the content horizontally */
-    margin-right: 1.9375rem; /* Adjusted margin to move it 15px to the left */
-}
-
-#overall-score {
-    font-size: 4.375rem; /* 70px in rem */
-    margin: 2.5rem 0 0 0.1rem; /* 40px 0 0 10px in rem */
-}
-
-.spinner {
-    border: 1rem solid #f3f3f3; /* Light grey */
-    border-top: 1rem solid #3498db; /* Blue */
-    border-radius: 50%;
-    width: 5rem; /* 80px in rem */
-    height: 5rem; /* 80px in rem */
-    animation: spin 2s linear infinite;
-    margin-left: 5.2rem;
-}
-
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
-
-.small-spinner {
-    border: 0.125rem solid rgb(255, 255, 255);
-    border-top: 0.125rem solid #000000; /* Blue */
-    border-radius: 50%;
-    width: 0.625rem; /* 10px in rem */
-    height: 0.625rem; /* 10px in rem */
-    animation: spin 1s linear infinite;
-    margin-left: 0.3125rem; /* Adjust as needed to position the spinner */
-}
-
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
-
-#foot {
-    margin-left: 6.875rem; /* 110px in rem */
-}
-/* Add these styles for error words underline */
-.error-word {
-    color: red;
-    cursor: pointer;
-    text-decoration: underline;
+  /* Rest of your existing styles */
+  .frame {
+    /* Add any styles you need for the frame */
+    flex: 1;
+    margin-left: 300px; /* Adjust this margin based on the header width *//* Add padding to create space for the header */
   }
-  
-.error-word:hover {
-    background-color: #ffe6e6; /* Light red background on hover */
-}

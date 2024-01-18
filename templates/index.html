@@ -18,70 +18,73 @@
 
 </head>
 <body>
-  <div class="container">
-    <div class="header">
-      <h3 id="one"></h3>
-      <h3 id="name">WriteWave</h3>
-    </div>
-    <div class="left-panel">
-      <h1>Your Personal IELTS Essay Examiner</h1>
-      <form id="chat-form">
-        <label for="user-question">Question:</label>
-        <textarea
-          type="text"
-          id="user-question"
-          name="user_question"
-          placeholder="Type your question..."
-        ></textarea>
-        <div class="error-message" id="question-error-message">Question cannot be empty.</div>
+  <div id="header">
+    <img id="logo" src="{{url_for('static', filename='logo.png')}}" alt="Logo">
+    <div id="header-text">WriteWave</div>
+    <img id="line" src="{{url_for('static', filename='line.png')}}" alt="Line">
+    <img id="line2" src="{{url_for('static', filename='line2.png')}}" alt="Line2">
+  </div>
 
-        <label for="user-input">Your essay:</label>
-        <textarea
-          id="user-input"
-          name="user_input"
-          placeholder="Type your message..."
-        ></textarea>
-        <div class="error-message" id="user-input-error-message">Your essay cannot be empty.</div>
 
-<!-- Add the following code inside your form in the left-panel div -->
-        <label for="photo-upload">Upload Photo:</label>
-        <input type="file" id="photo-upload" name="file_upload" onchange="uploadFile()">
-        <button id="uploadBtn">Upload</button>
 
-        <div id="uploadSpinner" class="small-spinner" style="display: none;"></div>
+  <div class="left-panel">
+    <h1>Your Personal IELTS Essay Examiner</h1>
+    <form id="chat-form">
+      <label for="user-question">Question:</label>
+      <textarea
+        type="text"
+        id="user-question"
+        name="user_question"
+        placeholder="Type your question..."
+      ></textarea>
+      <div class="error-message" id="question-error-message">Question cannot be empty.</div>
 
-        <button type="submit" id="submitBtn">Submit</button>
+      <label for="user-input">Your essay:</label>
+      <textarea
+        id="user-input"
+        name="user_input"
+        placeholder="Type your message..."
+      ></textarea>
+      <div class="error-message" id="user-input-error-message">Your essay cannot be empty.</div>
 
-        <!-- Add the following code inside your form in the left-panel div -->
-        <div id="error-box" style="display: none;">
-          <h3>Error Box</h3>
-          <div id="user-input-error"></div>
-        </div>
-        
+      <label for="photo-upload">Upload Photo:</label>
+      <input type="file" id="photo-upload" name="file_upload" onchange="uploadFile()">
+      <button id="uploadBtn">Upload</button>
+      <p id="no1">Upload PHOTO to scan your essay</p>
 
-        <button id="model-answer-btn">Model Answer</button>
-        <div id="model"></div>
+      <div id="uploadSpinner" class="small-spinner" style="display: none;"></div>
 
-        <button id="get_suggestion">Get suggestion</button>
-        <div id="sg"></div>
+      
 
-      </form>
-    </div>
-    <div class="right-panel">
-      <div id="overall-score-box">
-        <h2>Overall Score</h2>
-        <p id="overall-score"></p>
+      <div id="error-box" style="display: none;">
+        <h3>Error Box</h3>
+        <div id="user-input-error"></div>
       </div>
 
- <!-- Add the reset button -->
-      <div id="word-count">Word count: 0 | Paragraph count: 0</div>
-      <div id="result"></div>
-      <button id="resetBtn">Reset</button>
-      <footer id="foot"> 
-        <p>&copy; WriteWave</p>
-      </footer>
-    </div>
+      <button id="model-answer-btn">Model Answer</button>
+      <div id="model"></div>
+
+      <button id="get_suggestion">Get suggestion</button>
+      <div id="sg"></div>
+
+    </form>
   </div>
+  <div class="right-panel">
+    <button type="submit" id="submitBtn">Submit</button>
+    <div id="overall-score-box">
+      <h2>Overall Score</h2>
+      <p id="overall-score"></p>
+    </div>
+
+<!-- Add the reset button -->
+    <div id="word-count">Word count: 0 | Paragraph count: 0</div>
+    <div id="result"></div>
+    <button id="resetBtn">Reset</button>
+    <footer id="foot"> 
+      <p>&copy; WriteWave</p>
+    </footer>
+  </div>
+</div>
 
   <script src="{{ url_for('static', filename='js/script.js') }}"></script>
   </body>
