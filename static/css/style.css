@@ -47,10 +47,11 @@ body {
 
   #user-question {
     resize: none;
+    margin-bottom: 1rem;
     height: 6.25rem; /* 100px in rem */
     border-color: #F5F1E2;
     background-color: #F5F1E2;
-    border-radius: 1rem; /* 5px in rem */
+    border-radius: 0.9rem; /* 5px in rem */
     padding: 0.8rem; /* 10px in rem */
     font-size: 1rem; /* 16px in rem */
     font-family: "Arial", sans-serif;
@@ -63,7 +64,7 @@ body {
     height: 26.875rem; /* 430px in rem */
     border-color: #F5F1E2;
     background-color: #F5F1E2;
-    border-radius: 1rem; /* 5px in rem */
+    border-radius: 0.9rem; /* 5px in rem */
     padding: 0.8rem; /* 10px in rem */
     font-size: 1rem; /* 16px in rem */
     font-family: "Arial", sans-serif;
@@ -88,28 +89,168 @@ h1{
     font-family: Monospace;
     margin-bottom: 6rem;
 }
-#line2 {
-    margin-left: 90rem;
-    margin-top: -15rem;
-    width: 60rem;
- /* Add margin at the top of #line2 */
-}
+
 #submitBtn {
-    background-color: #4caf50;
+    background-color: #75B3BC;
     color: white;
     border: none;
-    border-radius: 0.3125rem; /* 5px in rem */
+    border-radius: 0.6rem; /* 5px in rem */
     padding: 0.625rem 0.9375rem; /* 10px 15px in rem */
     cursor: pointer;
-    margin-bottom: 1.875rem; /* 30px in rem */
+    margin-left: 4rem;
+    width: 19rem;
+    margin-bottom: 1.2rem; /* 30px in rem */
 }
 
 #submitBtn:hover {
-    background-color: #45a049;
+    background-color: #6CA5AD;
 }
   /* Rest of your existing styles */
-  .frame {
+.frame {
     /* Add any styles you need for the frame */
     flex: 1;
     margin-left: 300px; /* Adjust this margin based on the header width *//* Add padding to create space for the header */
+}
+
+  .spinner {
+    border: 1rem solid #f3f3f3; /* Light grey */
+    border-top: 1rem solid #3498db; /* Blue */
+    border-radius: 50%;
+    width: 5rem; /* 80px in rem */
+    height: 5rem; /* 80px in rem */
+    animation: spin 2s linear infinite;
+    margin-left: 6.2rem;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.small-spinner {
+    border: 0.125rem solid rgb(255, 255, 255);
+    border-top: 0.125rem solid #000000; /* Blue */
+    border-radius: 50%;
+    width: 0.625rem; /* 10px in rem */
+    height: 0.625rem; /* 10px in rem */
+    animation: spin 1s linear infinite;
+    margin-left: 0.3125rem; /* Adjust as needed to position the spinner */
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+#foot {
+    margin-left: 6.875rem; /* 110px in rem */
+}
+/* Add these styles for error words underline */
+.error-word {
+    color: red;
+    cursor: pointer;
+    text-decoration: underline;
   }
+  
+.error-word:hover {
+    background-color: #ffe6e6; /* Light red background on hover */
+}
+.error-message {
+  color: red;
+  display: none;
+}
+#model {
+  border: 0.0625rem solid #F5F1E2; /* 1px in rem */
+  border-radius: 0.9rem; /* 5px in rem */
+  padding: 1.25rem; /* 20px in rem */
+  background-color: #F5F1E2;
+  min-height: 6.25rem; /* 100px in rem */
+  overflow-wrap: break-word;
+  width: 47.5rem; /* 950px in rem */
+  margin-bottom: 0.625rem; /* 10px in rem */
+}
+
+#sg {
+  border: 0.0625rem solid #F5F1E2; /* 1px in rem */
+  border-radius: 0.9rem; /* 5px in rem */
+  padding: 1.25rem; /* 20px in rem */
+  background-color: #F5F1E2;
+  min-height: 6.25rem; /* 100px in rem */
+  overflow-wrap: break-word;
+  width: 47.5rem; /* 950px in rem */
+  margin-top: 0.625rem; /* 10px in rem */
+}
+#model-answer-btn {
+  background-color: #75B3BC;
+  color: white;
+  border: none;
+  border-radius: 0.6rem; /* 5px in rem */
+  padding: 0.625rem 0.9375rem; /* 10px 15px in rem */
+  cursor: pointer;
+  align-self: flex-start;
+  margin-bottom: 0.625rem; /* 10px in rem */
+}
+
+#get_suggestion {
+  background-color: #75B3BC;
+  color: white;
+  border: none;
+  border-radius: 0.6rem; /* 5px in rem */
+  padding: 0.625rem 0.9375rem; /* 10px 15px in rem */
+  cursor: pointer;
+  align-self: flex-start;
+  margin-top: 1.25rem; /* 20px in rem */
+}
+
+#get_suggestion:hover {
+  background-color: #6CA5AD;
+}
+
+#model-answer-btn:hover {
+  background-color: #6CA5AD;
+}
+#resetBtn {
+  margin-left: 11.5rem; /* 125px in rem */
+  background-color: #e53935;
+  color: white;
+  border: none;
+  border-radius: 0.3125rem; /* 5px in rem */
+  padding: 0.625rem 0.9375rem; /* 10px 15px in rem */
+}
+
+#resetBtn:hover {
+  background-color: #c62828;
+}
+
+#result {
+  margin-top: 1.875rem; /* 30px in rem */
+  padding: 1.25rem; /* 20px in rem */
+  min-height: 5rem; /* 80px in rem */
+  overflow-wrap: break-word;
+  width: 20rem; /* 80% in rem */
+  margin-bottom: 0.625rem; 
+  margin-left: 2.5rem;/* 10px in rem */
+}
+#word-count {
+  margin-top: -1rem; /* 30px in rem */
+  margin-left: 7.5rem; /* 55px in rem */
+  font-size: 0.875rem; /* 14px in rem */
+}
+#overall-score-box { /* Center the content horizontally */
+  margin-left: 7rem;
+  font-size: 1.3rem;
+  font-family: Monospace; /* Adjusted margin to move it 15px to the left */
+}
+
+#overall-score {
+  font-size: 5.375rem; /* 70px in rem */
+  margin-left: 4.7rem;
+  margin-top: -0.4rem; 
+  margin-bottom: 1.6rem;/* 40px 0 0 10px in rem */
+}
+#foot{
+  margin-left: 10rem;
+}
+#error-box{
+  margin-bottom: 2rem;
+}

@@ -22,7 +22,6 @@
     <img id="logo" src="{{url_for('static', filename='logo.png')}}" alt="Logo">
     <div id="header-text">WriteWave</div>
     <img id="line" src="{{url_for('static', filename='line.png')}}" alt="Line">
-    <img id="line2" src="{{url_for('static', filename='line2.png')}}" alt="Line2">
   </div>
 
 
@@ -67,10 +66,11 @@
       <button id="get_suggestion">Get suggestion</button>
       <div id="sg"></div>
 
-    </form>
+
   </div>
   <div class="right-panel">
     <button type="submit" id="submitBtn">Submit</button>
+    
     <div id="overall-score-box">
       <h2>Overall Score</h2>
       <p id="overall-score"></p>
@@ -78,13 +78,12 @@
 
 <!-- Add the reset button -->
     <div id="word-count">Word count: 0 | Paragraph count: 0</div>
+
     <div id="result"></div>
     <button id="resetBtn">Reset</button>
-    <footer id="foot"> 
-      <p>&copy; WriteWave</p>
-    </footer>
   </div>
 </div>
+</form>
 
   <script src="{{ url_for('static', filename='js/script.js') }}"></script>
   </body>
