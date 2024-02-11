@@ -12,7 +12,7 @@ CORS(app)
 # Set your OpenAI API key
 openai.api_key = "API_KEY"
 
-headers = {"Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNDAyMjE5MjgtNjZlMC00ZjdmLTgxZGMtNDI1YzcyOGIzMjRjIiwidHlwZSI6ImFwaV90b2tlbiJ9.v8a_xa_PMX9QY8Siv5Z1D_lvjRq5C4vzbpVEsH9hlLs"}
+headers = {"Authorization": "Bearer"}
 
 url = "https://api.edenai.run/v2/ocr/ocr"
 url2 = "https://api.edenai.run/v2/text/spell_check"
@@ -48,7 +48,7 @@ def gpt3():
     user_input = request.form['user_input']
 
     messages = [
-        {"role": "system", "content": f"You know everything in scoring Ielts writing task 2. Using band descriptor for IELTS writing task 2 score this essay - . BUT DO NOT WRITE OVERALL SCORE, WRITE ONLY SCORES FOR EACH SECTION; I will give the overall score by myself and Ensure that you do not provide an overall score for the essay or any output beyond the Grammatical Range and Accuracy section. Use only this model response as a template to give a good answer -  And if the essay's structure is bad you should give lower points. Be very strict in scoring and remove points for gramatical mistakes and etcetra. If user gives something not essay, give 0 in every score  "},
+        {"role": "system", "content": f"You know everything in scoring Ielts writing task 2. Using band descriptor for IELTS writing task 2 score this essay - {user_input}"},
         {"role": "user", "content": user_input}
     ]
 
@@ -75,7 +75,7 @@ def gpt3():
 def model_a():
     user_input = request.form['user_input']
 
-    messages = [{"role": "system", "content": f"write model answer for this essay writing task 2 using this essay - {user_input}. write in 250 - 270 words. make it better, but do not change it fully. If user gives something not essay, give 0 in every score and print error message   "}]
+    messages = [{"role": "system", "content": f"write model answer for this essay writing task 2 using this essay - {user_input}. write in 250 - 270 words. "}]
 
     try:
         response = openai.ChatCompletion.create(
@@ -94,7 +94,7 @@ def model_a():
 def suggest():
     user_input = request.form['user_input']
 
-    messages = [{"role": "system", "content": f"using this essay -{user_input}. Write your feedback and suggestion to improve this essay and writing task 2 in ielts,  But do not write the model essay in the responce and do not use pronouns in you responce, instead use (this, that and etcetera). And also Find what typy of essay it this (Discussion Essay. Opinion Essay. Multi-part Essay. Multi-part and Opinion Essay. Positive/Negative Essay. Cause/Solution Essay. Advantage/Disadvantage Essay.). Feedback and suggestion responce should be bigger in terms of words than sturcuture text. If user gives something not essay, give 0 in every score    "}]
+    messages = [{"role": "system", "content": f"using this essay -{user_input}. Write your feedback and suggestion to improve this essay and writing task 2 in ielts,  But do not write the model essay in the responce and do not use pronouns in you responce, instead use (this, that and etcetera). And also Find what typy of essay it this (Discussion Essay. Opinion Essay. Multi-part Essay. Multi-part and Opinion Essay. Positive/Negative Essay. Cause/Solution Essay. Advantage/Disadvantage Essay.). Feedback and suggestion responce should be bigger in terms of words than sturcuture text."}]
 
     try:
         response = openai.ChatCompletion.create(
