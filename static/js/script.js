@@ -10,9 +10,9 @@ window.onload = function () {
   const resetBtn = document.getElementById("resetBtn");
   const resultDiv = document.getElementById("result");
   const uplaod = document.getElementById("uploadBtn")
-  const uploadSpinner = document.getElementById("uploadSpinner"); // Add this line
+  const uploadSpinner = document.getElementById("uploadSpinner"); 
 
-  let spinnerDiv; // Declare spinnerDiv
+  let spinnerDiv; 
 
   let submitButtonClicked = false;
   let modelAnswerClicked = false;
@@ -40,38 +40,38 @@ window.onload = function () {
     const errorBox = document.getElementById("error-box");
     const errorContent = document.getElementById("user-input-error");
   
-    // Clear previous content
+  
     errorContent.innerHTML = '';
   
-    // Check if there are error words and suggestions
+   
     if (errorData.length > 0) {
       errorBox.style.display = "block";
   
-      // Create a copy of the original text
+    
       let originalText = document.getElementById("user-input").value;
   
-      // Create a new div to display the highlighted text
+ 
       const highlightedTextDiv = document.createElement("div");
   
-      // Iterate through each error data
+ 
       errorData.forEach((error) => {
-        // Create a span for each error word
+
         const errorSpan = document.createElement("span");
         errorSpan.innerHTML = `<span class="error-word" data-suggestion="${error.suggestions[0].suggestion}">${error.text}</span> `;
         
-        // Append the span to the highlighted text
+
         highlightedTextDiv.appendChild(errorSpan);
   
-        // Replace the error word with the highlighted version in the original text
+
         originalText = originalText.replace(error.text, errorSpan.outerHTML);
       });
   
-      // Set the content of the error content div to the highlighted text
+
       errorContent.innerHTML = originalText;
   
 
     } else {
-      // If no error data, hide the error box
+
       errorBox.style.display = "none";
     }
   }
@@ -124,11 +124,11 @@ window.onload = function () {
 
     let fullUserInput = `Question: ${userQuestion}\n\n${userInput}`;
 
-    // Show loading spinner
-    resultDiv.innerHTML = ''; // Clear any previous content
-    spinnerDiv = document.createElement("div"); // Create a new spinnerDiv
+
+    resultDiv.innerHTML = ''; 
+    spinnerDiv = document.createElement("div");
     spinnerDiv.classList.add("spinner");
-    resultDiv.appendChild(spinnerDiv); // Append the spinnerDiv
+    resultDiv.appendChild(spinnerDiv); 
 
     const formData = new FormData();
     formData.append('user_input', fullUserInput);
@@ -139,18 +139,18 @@ window.onload = function () {
     })
       .then((response) => response.json())
       .then((data) => {
-        // Extract the content from the data received
+
         let content = data.content;
         let overallScore = data.overall_score;
         let overallScoreElement = document.getElementById("overall-score");
         overallScoreElement.innerText = `${overallScore}`;
 
-        // Display the result and hide the spinner
+
         spinnerDiv.style.display = 'none';
         content = content.replace(/\n/g, "<br>");
         resultDiv.innerHTML = content;
 
-        // Disable submit button after receiving the result
+
         submitBtn.disabled = false;
         enableButtons();
       })
@@ -210,7 +210,7 @@ window.onload = function () {
 
       const userInput = document.getElementById("user-input").value;
 
-      // Add a small spinner next to the "Model Answer" button
+
       const spinner = createSmallSpinner();
       modelAnswerBtn.appendChild(spinner);
 
@@ -228,7 +228,7 @@ window.onload = function () {
           content = content.replace(/\n/g, "<br>");
           resultDiv.innerHTML = content;
 
-          // Remove the spinner when the content is loaded
+
           spinner.remove();
         })
         .catch((error) => {
@@ -250,7 +250,6 @@ window.onload = function () {
 
       const userInput = document.getElementById("user-input").value;
 
-      // Add a small spinner next to the "Get Suggestion" button
       const spinner = createSmallSpinner();
       getSuggestionBtn.appendChild(spinner);
 
@@ -268,7 +267,7 @@ window.onload = function () {
           content = content.replace(/\n/g, "<br>");
           resultDiv.innerHTML = content;
 
-          // Remove the spinner when the content is loaded
+
           spinner.remove();
         })
         .catch((error) => {
@@ -308,7 +307,7 @@ window.onload = function () {
 
     resetOverallScore();
 
-    // Remove the spinner when resetting
+
     if (spinnerDiv) {
       spinnerDiv.remove();
     }
