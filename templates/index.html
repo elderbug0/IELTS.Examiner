@@ -6,28 +6,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
     <link rel="stylesheet" href="{{url_for('static',filename='css/style.css')}}">
+    <link rel="icon" href="{{url_for('static',filename='logo.png')}}">
     <title>WriteWave</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-    <style>
-      /* CSS for styling the "Email us" link as a button */
-      /* CSS for styling the loading spinner */
-
-
-    </style>
-
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-46MF10KQ0G"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+    
+      gtag('config', 'G-46MF10KQ0G');
+    </script>
 </head>
+
 <body>
+
+  <div class="d-flex sections">
   <div id="header">
     <img id="logo" src="{{url_for('static', filename='logo.png')}}" alt="Logo">
     <div id="header-text">WriteWave</div>
     <img id="line" src="{{url_for('static', filename='line.png')}}" alt="Line">
+    <a href="{{ url_for('index') }}" class="btn" id="check">Check Your Essay</a>
+    <a href="{{ url_for('contact_us') }}" class="btn" id="contact">Contact Us</a>
   </div>
 
 
 
+
+<div class="d-flex sections p-4 space-between">
   <div class="left-panel">
-    <h1>Your Personal IELTS Essay Examiner</h1>
+    <h1 class="mytext">Your personal IELTS Examiner</h1>
     <form id="chat-form">
       <label for="user-question">Question:</label>
       <textarea
@@ -60,11 +69,12 @@
         <div id="user-input-error"></div>
       </div>
 
-      <button id="model-answer-btn">Model Answer</button>
-      <div id="model"></div>
-
-      <button id="get_suggestion">Get suggestion</button>
-      <div id="sg"></div>
+      <button id="model-answer-btn" class="hidden">Get Improved answer</button>
+      <div id="model" class="hidden"></div>
+      
+      <button id="get_suggestion" class="hidden">Get suggestion</button>
+      <div id="sg" class="hidden"></div>
+      
 
 
   </div>
@@ -80,9 +90,14 @@
     <div id="word-count">Word count: 0 | Paragraph count: 0</div>
 
     <div id="result"></div>
+    <div class="d-flex justify-content-center">
     <button id="resetBtn">Reset</button>
+
+    </div>
   </div>
 </div>
+</div>
+
 </form>
 
   <script src="{{ url_for('static', filename='js/script.js') }}"></script>
