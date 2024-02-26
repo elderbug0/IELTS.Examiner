@@ -14,7 +14,6 @@ This project aims to help users improve their IELTS Writing Task 2 essays by pro
 - **Flask:** A lightweight WSGI web application framework.
 - **OpenAI GPT-3.5 Turbo:** For generating scores, model answers, and suggestions.
 - **EdenAI:** For OCR and spell-check functionalities.
-- **Vanilla JavaScript:** For client-side scripting.
 - **HTML/CSS:** For layout and design.
 
 ## How to Use
