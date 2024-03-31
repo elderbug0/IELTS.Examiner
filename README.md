@@ -13,14 +13,14 @@ This project aims to help users improve their IELTS Writing Task 2 essays by pro
 ## Tech Stack
 - **Flask:** A lightweight WSGI web application framework.
 - **OpenAI GPT-3.5 Turbo:** For generating scores, model answers, and suggestions.
-- **EdenAI:** For OCR and spell-check functionalities.
+- **Google Vision:** For OCR
 - **HTML/CSS:** For layout and design.
 
 ## How to Use
 ### Setup
 1. Install Flask: `pip install flask`
 2. Install additional requirements as needed.
-3. Set up your OpenAI API key and EdenAI credentials in the `app.py` file.
+3. Set up your OpenAI API key and Google Vision credentials in the `app.py` file.
    
 ### Run the Flask App
 1. Navigate to the project directory in your terminal.
